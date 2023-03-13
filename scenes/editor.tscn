@@ -1,0 +1,155 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/icons/2D.svg" type="Texture" id=2]
+[ext_resource path="res://assets/icons/3D.svg" type="Texture" id=3]
+[ext_resource path="res://assets/icons/Play.svg" type="Texture" id=4]
+[ext_resource path="res://assets/icons/Script.svg" type="Texture" id=5]
+[ext_resource path="res://scripts/editor/Scenes.gd" type="Script" id=6]
+
+[node name="Root" type="Node"]
+
+[node name="UIRoot" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+theme_type_variation = "DarkPanel"
+
+[node name="Margin" type="MarginContainer" parent="UIRoot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="UIRoot/Margin"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1019.0
+margin_bottom = 590.0
+
+[node name="Titlebar" type="HBoxContainer" parent="UIRoot/Margin/VBox"]
+margin_right = 1014.0
+margin_bottom = 28.0
+
+[node name="Left" type="HBoxContainer" parent="UIRoot/Margin/VBox/Titlebar"]
+margin_right = 335.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="SceneButton" type="MenuButton" parent="UIRoot/Margin/VBox/Titlebar/Left"]
+margin_right = 51.0
+margin_bottom = 28.0
+text = "Scene"
+
+[node name="ProjectButton" type="MenuButton" parent="UIRoot/Margin/VBox/Titlebar/Left"]
+margin_left = 55.0
+margin_right = 115.0
+margin_bottom = 28.0
+focus_mode = 2
+text = "Project"
+
+[node name="EditorButton" type="MenuButton" parent="UIRoot/Margin/VBox/Titlebar/Left"]
+margin_left = 119.0
+margin_right = 170.0
+margin_bottom = 28.0
+focus_mode = 2
+text = "Editor"
+
+[node name="HelpButton" type="MenuButton" parent="UIRoot/Margin/VBox/Titlebar/Left"]
+margin_left = 174.0
+margin_right = 215.0
+margin_bottom = 28.0
+focus_mode = 2
+text = "Help"
+
+[node name="Center" type="HBoxContainer" parent="UIRoot/Margin/VBox/Titlebar"]
+margin_left = 339.0
+margin_right = 674.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="2DButton" type="Button" parent="UIRoot/Margin/VBox/Titlebar/Center"]
+margin_left = 90.0
+margin_right = 139.0
+margin_bottom = 28.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+text = "2D"
+icon = ExtResource( 2 )
+flat = true
+
+[node name="3DButton" type="Button" parent="UIRoot/Margin/VBox/Titlebar/Center"]
+margin_left = 143.0
+margin_right = 192.0
+margin_bottom = 28.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+text = "3D"
+icon = ExtResource( 3 )
+flat = true
+
+[node name="ScriptButton" type="Button" parent="UIRoot/Margin/VBox/Titlebar/Center"]
+margin_left = 196.0
+margin_right = 245.0
+margin_bottom = 28.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+text = "3D"
+icon = ExtResource( 5 )
+flat = true
+
+[node name="Right" type="HBoxContainer" parent="UIRoot/Margin/VBox/Titlebar"]
+margin_left = 678.0
+margin_right = 1014.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="PlayButton" type="Button" parent="UIRoot/Margin/VBox/Titlebar/Right"]
+margin_left = 308.0
+margin_right = 336.0
+margin_bottom = 28.0
+focus_mode = 0
+enabled_focus_mode = 0
+icon = ExtResource( 4 )
+flat = true
+
+[node name="Editor" type="HBoxContainer" parent="UIRoot/Margin/VBox"]
+margin_top = 32.0
+margin_right = 1014.0
+margin_bottom = 585.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LeftDock" type="VBoxContainer" parent="UIRoot/Margin/VBox/Editor"]
+margin_bottom = 553.0
+
+[node name="Scenes" type="VBoxContainer" parent="UIRoot/Margin/VBox/Editor"]
+margin_left = 4.0
+margin_right = 1010.0
+margin_bottom = 553.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Tabs" type="Tabs" parent="UIRoot/Margin/VBox/Editor/Scenes"]
+margin_right = 1006.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+tab_align = 0
+tab_close_display_policy = 1
+drag_to_rearrange_enabled = true
+script = ExtResource( 6 )
+
+[node name="Previews" type="Control" parent="UIRoot/Margin/VBox/Editor/Scenes"]
+margin_top = 34.0
+margin_right = 1006.0
+margin_bottom = 34.0
+
+[node name="RightDock" type="VBoxContainer" parent="UIRoot/Margin/VBox/Editor"]
+margin_left = 1014.0
+margin_right = 1014.0
+margin_bottom = 553.0
