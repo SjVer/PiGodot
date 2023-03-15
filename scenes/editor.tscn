@@ -194,16 +194,16 @@ split_offset = 200
 [node name="LeftDock" type="VSplitContainer" parent="Margin/VBox/Docks"]
 margin_right = 210.0
 margin_bottom = 553.0
-split_offset = 159
+split_offset = 160
 
 [node name="TopTabs" type="TabContainer" parent="Margin/VBox/Docks/LeftDock"]
 margin_right = 210.0
-margin_bottom = 199.0
+margin_bottom = 200.0
 tab_align = 0
 drag_to_rearrange_enabled = true
 
 [node name="BottomTabs" type="TabContainer" parent="Margin/VBox/Docks/LeftDock"]
-margin_top = 207.0
+margin_top = 208.0
 margin_right = 210.0
 margin_bottom = 553.0
 tab_align = 0

@@ -160,8 +160,11 @@ func fill_file_tree(root: TreeItem, item: FileItem):
 	sub_item.set_icon(0, item.icon)
 	sub_item.set_meta("full_path", item.full_path)
 	sub_item.set_tooltip(0, item.full_path)
-	if item.modulate: sub_item.set_icon_modulate(0, item.modulate)
-	sub_item.collapsed = item.is_dir and root
+
+	if item.modulate:
+		sub_item.set_icon_modulate(0, item.modulate)
+
+	sub_item.collapsed = item.is_dir and root != null and search_input.text == ""
 
 	# sort items
 	item.files.sort_custom(FileItem, "compare")
@@ -202,3 +205,10 @@ func _ready():
 
 func _on_search_input_changed(_new_text: String):
 	fill_file_tree(null, root_file_item)
+
+func _on_reload_pressed():
+	update_file_tree()
+
+func _on_tree_item_double_clicked():
+	# TODO: this is just not being called :(
+	print("test")

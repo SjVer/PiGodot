@@ -38,3 +38,5 @@ allow_rmb_select = true
 select_mode = 2
 
 [connection signal="text_changed" from="SearchBar/Input" to="." method="_on_search_input_changed"]
+[connection signal="pressed" from="SearchBar/ReloadButton" to="." method="_on_reload_pressed"]
+[connection signal="item_double_clicked" from="Tree" to="." method="_on_tree_item_double_clicked"]

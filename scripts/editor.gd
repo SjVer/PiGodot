@@ -16,6 +16,9 @@ func load_default_layout():
 	left_dock_bottom.add_child(filesystem_dock)
 	right_dock_top.add_child(inspector_dock)
 
+	$Margin/VBox/Docks.split_offset = 80
+	$Margin/VBox/Docks/CenterRight.split_offset = -200
+
 func _ready():
 	# make add scene button darker
 	add_scene_button.add_color_override("icon_color_normal",  Color(0.6, 0.6, 0.6, 0.8))
