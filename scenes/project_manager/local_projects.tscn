@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/icons/Search.svg" type="Texture" id=1]
+[ext_resource path="res://assets/icons/Add.svg" type="Texture" id=2]
+[ext_resource path="res://assets/icons/Load.svg" type="Texture" id=3]
+[ext_resource path="res://theme.tres" type="Theme" id=4]
+[ext_resource path="res://scripts/project_manager/local_projects.gd" type="Script" id=5]
+
+[node name="Projects" type="VBoxContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 35.0
+margin_right = -5.0
+margin_bottom = -5.0
+theme = ExtResource( 4 )
+script = ExtResource( 5 )
+
+[node name="MenuBar" type="HBoxContainer" parent="."]
+margin_right = 1014.0
+margin_bottom = 28.0
+
+[node name="LineEdit" type="LineEdit" parent="MenuBar"]
+margin_right = 619.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+right_icon = ExtResource( 1 )
+placeholder_text = "Search project"
+
+[node name="SortLabel" type="Label" parent="MenuBar"]
+margin_left = 623.0
+margin_right = 662.0
+margin_bottom = 28.0
+text = "Sort:"
+
+[node name="SortOptionButton" type="OptionButton" parent="MenuBar"]
+margin_left = 666.0
+margin_right = 816.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 150, 0 )
+
+[node name="NewButton" type="ToolButton" parent="MenuBar"]
+margin_left = 820.0
+margin_right = 933.0
+margin_bottom = 28.0
+text = "New Project"
+icon = ExtResource( 2 )
+flat = false
+
+[node name="LoadButton" type="ToolButton" parent="MenuBar"]
+margin_left = 937.0
+margin_right = 1014.0
+margin_bottom = 28.0
+text = "Import"
+icon = ExtResource( 3 )
+flat = false
+
+[node name="ProjectList" type="ScrollContainer" parent="."]
+margin_top = 32.0
+margin_right = 1014.0
+margin_bottom = 560.0
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="ProjectList"]
+margin_right = 1014.0
+margin_bottom = 528.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 4 )
+theme_type_variation = "ContentPanel"
+
+[node name="Margin" type="MarginContainer" parent="ProjectList/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+
+[node name="VBox" type="VBoxContainer" parent="ProjectList/Panel/Margin"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1004.0
+margin_bottom = 518.0

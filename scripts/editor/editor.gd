@@ -7,9 +7,9 @@ onready var right_dock_bottom : TabContainer = $Margin/VBox/Docks/CenterRight/Ri
 onready var scene_tabs : Tabs = $Margin/VBox/Docks/CenterRight/CenterDock/Scenes/Tabbar/Tabs
 onready var add_scene_button : ToolButton = $Margin/VBox/Docks/CenterRight/CenterDock/Scenes/Tabbar/Tabs/AddSceneButton
 
-var scenetree_dock = preload("res://scenes/scenetree.tscn").instance()
-var filesystem_dock = preload("res://scenes/filesystem.tscn").instance()
-var inspector_dock = preload("res://scenes/inspector.tscn").instance()
+var scenetree_dock = preload("res://scenes/editor/scenetree.tscn").instance()
+var filesystem_dock = preload("res://scenes/editor//filesystem.tscn").instance()
+var inspector_dock = preload("res://scenes/editor//inspector.tscn").instance()
 
 func load_default_layout():
 	left_dock_top.add_child(scenetree_dock)

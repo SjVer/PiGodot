@@ -108,16 +108,17 @@ func get_file_icon(filename: String):
 		return file_icon
 
 func scan_directory(dir: Directory, item: FileItem):
-	if dir.list_dir_begin(true, true) != OK: return
+	assert(dir.list_dir_begin(true, true) == OK)
 
 	var filename := "\b" # placeholder
 	while filename != "":
 		filename = dir.get_next()
+		var path = dir.get_current_dir().plus_file(filename)
 
 		# add the item
 		var sub_item : FileItem = FileItem.new()
 		sub_item.file_name = filename
-		sub_item.full_path = dir.get_current_dir().plus_file(filename)
+		sub_item.full_path = Workspace.localize_path(path)
 		sub_item.files = []
 		sub_item.directories = []
 
@@ -125,7 +126,7 @@ func scan_directory(dir: Directory, item: FileItem):
 			# open subdirectory
 			var sub_dir = Directory.new()
 			sub_dir.open(dir.get_current_dir())
-			if sub_dir.change_dir(filename) != OK: return
+			assert(sub_dir.change_dir(filename) == OK)
 
 			# check for .gdignore
 			if sub_dir.file_exists(".gdignore"): continue
@@ -186,7 +187,8 @@ func update_file_tree():
 
 	# scan the root directory
 	var dir := Directory.new()
-	if dir.open("res://") != OK: return
+	assert(dir.open(Workspace.resource_dir) == OK)
+
 	scan_directory(dir, root_file_item)
 
 	# fill the tree

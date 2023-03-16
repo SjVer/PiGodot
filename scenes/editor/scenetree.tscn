@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scripts/scenetree.gd" type="Script" id=1]
-[ext_resource path="res://assets/icons/Search.svg" type="Texture" id=2]
+[ext_resource path="res://scripts/editor/scenetree.gd" type="Script" id=1]
+[ext_resource path="res://assets/icons/Instance.svg" type="Texture" id=2]
 [ext_resource path="res://assets/icons/Add.svg" type="Texture" id=3]
-[ext_resource path="res://assets/icons/Instance.svg" type="Texture" id=4]
-[ext_resource path="res://assets/icons/ScriptCreate.svg" type="Texture" id=5]
+[ext_resource path="res://assets/icons/ScriptCreate.svg" type="Texture" id=4]
+[ext_resource path="res://assets/icons/Search.svg" type="Texture" id=5]
 
 [node name="FileSystemDock" type="VBoxContainer"]
 anchor_right = 1.0
@@ -24,21 +24,21 @@ icon = ExtResource( 3 )
 margin_left = 32.0
 margin_right = 60.0
 margin_bottom = 26.0
-icon = ExtResource( 4 )
+icon = ExtResource( 2 )
 
 [node name="Input" type="LineEdit" parent="SearchBar"]
 margin_left = 64.0
 margin_right = 992.0
 margin_bottom = 26.0
 size_flags_horizontal = 3
-right_icon = ExtResource( 2 )
+right_icon = ExtResource( 5 )
 placeholder_text = "Filter nodes"
 
 [node name="ScriptButton" type="ToolButton" parent="SearchBar"]
 margin_left = 996.0
 margin_right = 1024.0
 margin_bottom = 26.0
-icon = ExtResource( 5 )
+icon = ExtResource( 4 )
 
 [node name="Tree" type="Tree" parent="."]
 margin_top = 30.0

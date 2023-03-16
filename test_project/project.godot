@@ -8,33 +8,10 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "ConfigFile",
-"class": "Project",
-"language": "GDScript",
-"path": "res://scripts/project.gd"
-} ]
-_global_script_class_icons={
-"Project": ""
-}
-
 [application]
 
-config/name="PiGodot"
-run/main_scene="res://scenes/project_manager/project_manager.tscn"
-config/icon="res://assets/icon.png"
-
-[autoload]
-
-Workspace="*res://scripts/workspace.gd"
-
-[debug]
-
-gdscript/warnings/return_value_discarded=false
-
-[editor_plugins]
-
-enabled=PoolStringArray(  )
+config/name="Test Project"
+config/icon="res://icon.png"
 
 [gui]
 
@@ -49,3 +26,4 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

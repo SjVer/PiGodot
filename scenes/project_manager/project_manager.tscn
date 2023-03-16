@@ -1,0 +1,59 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://assets/icons/Environment.svg" type="Texture" id=2]
+[ext_resource path="res://scenes/project_manager/local_projects.tscn" type="PackedScene" id=3]
+
+[node name="Project Manager" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -280, -182 )
+theme = ExtResource( 1 )
+theme_type_variation = "BackgroundPanel"
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="Margin"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1019.0
+margin_bottom = 590.0
+
+[node name="Titlebar" type="HBoxContainer" parent="Margin/Control"]
+anchor_right = 1.0
+margin_bottom = 28.0
+alignment = 2
+
+[node name="Version" type="VBoxContainer" parent="Margin/Control/Titlebar"]
+margin_left = 920.0
+margin_right = 920.0
+margin_bottom = 28.0
+alignment = 1
+
+[node name="Label" type="LinkButton" parent="Margin/Control/Titlebar/Version"]
+margin_top = 4.0
+margin_bottom = 24.0
+hint_tooltip = "Click to copy."
+custom_colors/font_color = Color( 1, 1, 1, 0.6 )
+shortcut_in_tooltip = false
+underline = 2
+
+[node name="OptionButton" type="OptionButton" parent="Margin/Control/Titlebar"]
+margin_left = 924.0
+margin_right = 1014.0
+margin_bottom = 28.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "TODO"
+icon = ExtResource( 2 )
+flat = true
+
+[node name="Tabs" type="TabContainer" parent="Margin/Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+tab_align = 0
+
+[node name="Projects" parent="Margin/Control/Tabs" instance=ExtResource( 3 )]
