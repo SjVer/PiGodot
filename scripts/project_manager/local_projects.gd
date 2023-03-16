@@ -13,7 +13,8 @@ func add_project_item(folder: String):
 	assert(project.load(folder.plus_file("project.godot")) == OK)
 
 	var item : Panel = preload("res://scenes/project_manager/project_item.tscn").instance()
-	item.add_stylebox_override("panel", theme.get_stylebox("pressed", "Button"))
+	# TODO: fix this
+	item.add_stylebox_override("panel", theme.get_stylebox("pressed", "Button").duplicate())
 
 	var title_label : Label = item.get_node("HBox/Info/TitleLabel")
 	var path_label : Label = item.get_node("HBox/Info/PathOptions/PathLabel")
