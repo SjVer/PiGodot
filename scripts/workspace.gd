@@ -68,8 +68,7 @@ func open_project(folder: String):
 
 	# find userdata dir
 	var project_name = project.get_value("application", "config/name")
-	userdata_dir = OS.get_data_dir().plus_file("pigodot") \
-					.plus_file(project_name).plus_file("")
+	userdata_dir = PiGodot.data_dir.plus_file(project_name).plus_file("")
 	var dir := Directory.new()
 	if not dir.dir_exists(userdata_dir):
 		assert(dir.make_dir_recursive(userdata_dir) == OK)

@@ -26,6 +26,7 @@ config/icon="res://assets/icon.png"
 
 [autoload]
 
+PiGodot="*res://scripts/pigodot.gd"
 Workspace="*res://scripts/workspace.gd"
 
 [debug]
@@ -35,6 +36,10 @@ gdscript/warnings/return_value_discarded=false
 [editor_plugins]
 
 enabled=PoolStringArray(  )
+
+[gdnative]
+
+singletons=[  ]
 
 [gui]
 
