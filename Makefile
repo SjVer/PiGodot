@@ -9,4 +9,4 @@ START_REG=var version : String = \"
 END_REG=\" \# %%VERSION%%
 set-version:
 	@printf "Setting version to \"${VERSION}\"\n"
-	perl -pi -e "s/(?<=${START_REG}).*(?=${END_REG})/${VERSION}/g" ${F}
+	@perl -pi -e "s/(?<=${START_REG}).*(?=${END_REG})/${VERSION}/g" ${F}
