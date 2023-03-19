@@ -2,7 +2,7 @@ SHELL := /bin/bash
 
 BRANCH := $(shell git name-rev --name-only HEAD)
 COMMIT := $(shell git rev-parse --short HEAD)
-VERSION := ${BRANCH} [${COMMIT}]
+VERSION := pigodot ${BRANCH} [${COMMIT}]
 
 F=scripts/pigodot.gd
 START_REG=var version : String = \"
