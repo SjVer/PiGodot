@@ -1,13 +1,13 @@
 extends VBoxContainer
 
-func add_project_item(folder: String):
+func add_project_item(folder: String, favorite: bool):
 	var project := Project.new()
 	assert(project.load(folder.plus_file("project.godot")) == OK)
+	var name = project.get_value("application", "config/name")
 
-	var item : Panel = preload("res://scenes/project_manager/project_item.tscn").instance()
-	item.initialize(folder, project.get_value("application", "config/name"))
-
-	$ProjectList/Panel/Margin/VBox.add_child(item)
+	var item = preload("res://scenes/project_manager/project_item.tscn").instance()
+	$ProjectList/Panel/VBox.add_child(item)
+	item.initialize(folder, name, favorite)
 
 func _ready():
 	# load the projects
@@ -19,4 +19,5 @@ func _ready():
 		assert(cfg.load(cfg_file) == OK)
 
 	for project_folder in cfg.get_sections():
-		add_project_item(project_folder)
+		var favorite = cfg.get_value(project_folder, "favorite", false)
+		add_project_item(project_folder, favorite)

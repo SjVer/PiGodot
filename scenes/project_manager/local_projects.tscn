@@ -69,16 +69,6 @@ size_flags_vertical = 3
 theme = ExtResource( 4 )
 theme_type_variation = "ContentPanel"
 
-[node name="Margin" type="MarginContainer" parent="ProjectList/Panel"]
+[node name="VBox" type="VBoxContainer" parent="ProjectList/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 10
-custom_constants/margin_top = 10
-custom_constants/margin_left = 10
-custom_constants/margin_bottom = 10
-
-[node name="VBox" type="VBoxContainer" parent="ProjectList/Panel/Margin"]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 1004.0
-margin_bottom = 518.0
