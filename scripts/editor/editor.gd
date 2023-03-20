@@ -4,8 +4,8 @@ onready var left_dock_top : TabContainer = $Margin/VBox/Docks/LeftDock/TopTabs
 onready var left_dock_bottom : TabContainer = $Margin/VBox/Docks/LeftDock/BottomTabs
 onready var right_dock_top : TabContainer = $Margin/VBox/Docks/CenterRight/RightDock/TopTabs
 onready var right_dock_bottom : TabContainer = $Margin/VBox/Docks/CenterRight/RightDock/BottomTabs
-onready var scene_tabs : Tabs = $Margin/VBox/Docks/CenterRight/CenterDock/Scenes/Tabbar/Tabs
-onready var add_scene_button : ToolButton = $Margin/VBox/Docks/CenterRight/CenterDock/Scenes/Tabbar/Tabs/AddSceneButton
+onready var scene_tabs : Tabs = $Margin/VBox/Docks/CenterRight/CenterDock/VBox/Scenes/Tabbar/Tabs
+onready var add_scene_button : ToolButton = $Margin/VBox/Docks/CenterRight/CenterDock/VBox/Scenes/Tabbar/Tabs/AddSceneButton
 
 var scenetree_dock = preload("res://scenes/editor/scenetree.tscn").instance()
 var filesystem_dock = preload("res://scenes/editor//filesystem.tscn").instance()
@@ -71,6 +71,7 @@ func _ready():
 	# make add scene button darker
 	add_scene_button.add_color_override("icon_color_normal",  Color(0.6, 0.6, 0.6, 0.8))
 
+	# load layout stuff
 	load_default_layout()
 
 	# dummy scene
