@@ -27,6 +27,7 @@ config/icon="res://assets/icon.png"
 [autoload]
 
 PiGodot="*res://scripts/pigodot.gd"
+Log="*res://scripts/log.gd"
 Workspace="*res://scripts/workspace.gd"
 
 [debug]
