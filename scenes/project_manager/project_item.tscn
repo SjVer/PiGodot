@@ -105,6 +105,7 @@ focus_mode = 0
 enabled_focus_mode = 0
 icon = ExtResource( 6 )
 
+[connection signal="pressed" from="Button" to="." method="_on_project_pressed"]
 [connection signal="toggled" from="Margin/HBox/Favourite/Button" to="." method="_on_favourite_toggled"]
 [connection signal="pressed" from="Margin/HBox/Info/PathOptions/OpenButton" to="." method="_on_open_button_pressed"]
 [connection signal="pressed" from="Margin/HBox/Buttons/DeleteButton" to="." method="_on_delete_pressed"]

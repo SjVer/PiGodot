@@ -1,4 +1,5 @@
 bin/
+data_dir
 
 # Godot-specific ignores
 .import/

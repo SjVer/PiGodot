@@ -17,6 +17,12 @@ func initialize(folder: String, name: String, favorite: bool):
 	fav_button.pressed = favorite
 	_on_favourite_toggled(favorite)
 
+func _on_project_pressed():
+	# TODO: always true
+	if $Button.has_focus():
+		Workspace.open_project(project_folder)
+		get_tree().change_scene("res://scenes/editor/editor.tscn")
+
 func _on_open_button_pressed():
 	OS.shell_open("file://" + project_folder)
 
@@ -30,4 +36,4 @@ func _on_delete_pressed():
 	var dialog := ConfirmationDialog.new()
 	dialog.dialog_text = "This will delete the project permanently!"
 	add_child(dialog)
-	dialog.popup_centered()
+	dialog.popup_centered_minsize()
