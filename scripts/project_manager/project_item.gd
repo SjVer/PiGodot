@@ -64,6 +64,8 @@ func _on_rename_pressed():
 	title_input.caret_position = title_input.text.length()
 
 func _on_title_entered(new_text: String):
+	if new_text == "": new_text = "My Project"
+
 	project.set_value("application", "config/name", new_text)
 	assert(project.save_project() == OK)
 

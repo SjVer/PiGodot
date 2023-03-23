@@ -74,6 +74,8 @@ func open_project(folder: String):
 
 	print("[Workspace]: user data dir is: ", userdata_dir)
 
+	OS.set_window_title(project_name + " - " + PiGodot.app_name)
+
 func _init():
 	resource_dir_regex.compile("^res://")
 	userdata_dir_regex.compile("^user://")

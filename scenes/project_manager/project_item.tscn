@@ -79,6 +79,7 @@ margin_top = 35.0
 margin_right = 72.0
 margin_bottom = 70.0
 theme_type_variation = "TitleLabel"
+placeholder_text = "My Project"
 
 [node name="PathOptions" type="HBoxContainer" parent="Margin/HBox/Info"]
 margin_top = 35.0
