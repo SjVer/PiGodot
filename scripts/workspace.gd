@@ -4,6 +4,9 @@ var project: Project
 var resource_dir: String
 var userdata_dir: String
 
+var resource_dir_regex : RegEx = RegEx.new()
+var userdata_dir_regex : RegEx = RegEx.new()
+
 func localize_path(path: String) -> String: 
 	# adapted from https://github.com/godotengine/godot/blob/3.5/core/project_settings.cpp#L66
 
@@ -44,14 +47,16 @@ func localize_path(path: String) -> String:
 
 func globalize_path(path: String) -> String:
 	if path.begins_with("res://"):
-		if resource_dir != "": return path.replace("res:/", resource_dir)
-		else: return path.replace("res://", "")
+		return resource_dir_regex.sub(path, resource_dir.plus_file(""))
+		# if resource_dir != "": return path.replace("res:/", resource_dir)
+		# else: return path.replace("res://", "")
 	elif path.begins_with("user://"):
-		if userdata_dir != "": return path.replace("user:/", userdata_dir)
-		else: return path.replace("user://", "")
+		return userdata_dir_regex.sub(path, userdata_dir.plus_file(""))
+		# if userdata_dir != "": return path.replace("user:/", userdata_dir)
+		# else: return path.replace("user://", "")
 	else:
 		return path
-
+	
 func open_project(folder: String):
 	print("[Workspace]: opening project in folder: ", folder)
 	resource_dir = folder
@@ -76,4 +81,5 @@ func open_project(folder: String):
 	print("[Workspace]: user data dir is: ", userdata_dir)
 
 func _init():
-	pass
+	resource_dir_regex.compile("^res://")
+	userdata_dir_regex.compile("^user://")

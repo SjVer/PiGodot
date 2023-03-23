@@ -1,18 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
 [ext_resource path="res://scripts/editor/output.gd" type="Script" id=2]
+[ext_resource path="res://assets/JetBrainsMono_Regular.woff2" type="DynamicFontData" id=3]
 
 [sub_resource type="StyleBoxFlat" id=2608]
 content_margin_left = 4.0
 content_margin_right = 4.0
 content_margin_top = 4.0
-content_margin_bottom = 4.0
+content_margin_bottom = 0.0
 bg_color = Color( 0.2, 0.23, 0.31, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_color = Color( 0.1, 0.115, 0.155, 1 )
+
+[sub_resource type="DynamicFont" id=2937]
+size = 13
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -1
+extra_spacing_bottom = -1
+font_data = ExtResource( 3 )
 
 [node name="Output" type="PanelContainer"]
 margin_top = 92.0
@@ -42,12 +51,16 @@ text = "Output:"
 margin_left = 522.0
 margin_right = 565.0
 margin_bottom = 28.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "copy"
 
 [node name="ClearButton" type="Button" parent="VBox/Titlebar"]
 margin_left = 569.0
 margin_right = 612.0
 margin_bottom = 28.0
+focus_mode = 0
+enabled_focus_mode = 0
 text = "clear"
 
 [node name="OutputText" type="RichTextLabel" parent="VBox"]
@@ -57,4 +70,8 @@ margin_bottom = 32.0
 focus_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 2937 )
 selection_enabled = true
+
+[connection signal="pressed" from="VBox/Titlebar/CopyButton" to="." method="_on_copy_pressed"]
+[connection signal="pressed" from="VBox/Titlebar/ClearButton" to="." method="_on_clear_pressed"]

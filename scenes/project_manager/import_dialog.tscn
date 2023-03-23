@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/project_manager/import_dialog.gd" type="Script" id=2]
+
+[node name="ImportDialog" type="WindowDialog"]
+margin_right = 662.0
+margin_bottom = 139.0
+theme = ExtResource( 1 )
+window_title = "Import Existing Project"
+script = ExtResource( 2 )
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 5
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 5
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 652.0
+margin_bottom = 134.0
+
+[node name="Label" type="Label" parent="Margin/VBox"]
+margin_right = 642.0
+margin_bottom = 28.0
+text = "Project Folder:"
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
+margin_top = 32.0
+margin_right = 642.0
+margin_bottom = 60.0
+
+[node name="FolderInput" type="LineEdit" parent="Margin/VBox/HBox"]
+margin_right = 572.0
+margin_bottom = 28.0
+size_flags_horizontal = 3
+
+[node name="Status" type="VBoxContainer" parent="Margin/VBox/HBox"]
+margin_left = 576.0
+margin_right = 576.0
+margin_bottom = 28.0
+alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Margin/VBox/HBox/Status"]
+margin_top = 14.0
+margin_bottom = 14.0
+
+[node name="BrowseButton" type="Button" parent="Margin/VBox/HBox"]
+margin_left = 580.0
+margin_right = 642.0
+margin_bottom = 28.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Browse"
+
+[node name="StatusLabel" type="Label" parent="Margin/VBox"]
+margin_top = 64.0
+margin_right = 642.0
+margin_bottom = 92.0
+custom_colors/font_color = Color( 1, 0.470588, 0.419608, 1 )
+
+[node name="Buttons" type="HBoxContainer" parent="Margin/VBox"]
+margin_top = 96.0
+margin_right = 642.0
+margin_bottom = 124.0
+size_flags_horizontal = 3
+custom_constants/separation = 50
+alignment = 1
+
+[node name="CancelButton" type="Button" parent="Margin/VBox/Buttons"]
+margin_left = 217.0
+margin_right = 272.0
+margin_bottom = 28.0
+text = "Cancel"
+
+[node name="ConfirmButton" type="Button" parent="Margin/VBox/Buttons"]
+margin_left = 322.0
+margin_right = 424.0
+margin_bottom = 28.0
+text = "Import & Edit"
+
+[connection signal="text_changed" from="Margin/VBox/HBox/FolderInput" to="." method="_on_folder_input_changed"]
+[connection signal="pressed" from="Margin/VBox/Buttons/CancelButton" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="Margin/VBox/Buttons/ConfirmButton" to="." method="_on_confirm_pressed"]

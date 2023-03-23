@@ -47,7 +47,7 @@ text = "New Project"
 icon = ExtResource( 2 )
 flat = false
 
-[node name="LoadButton" type="ToolButton" parent="MenuBar"]
+[node name="ImportButton" type="ToolButton" parent="MenuBar"]
 margin_left = 937.0
 margin_right = 1014.0
 margin_bottom = 28.0
@@ -72,3 +72,6 @@ theme_type_variation = "ContentPanel"
 [node name="VBox" type="VBoxContainer" parent="ProjectList/Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+custom_constants/separation = 0
+
+[connection signal="pressed" from="MenuBar/ImportButton" to="." method="_on_import_pressed"]

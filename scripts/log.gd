@@ -15,10 +15,11 @@ signal error_message(text)
 
 func output_message(type, text: String):
 	match type:
-		MessageType.EDITOR: print(text)
-		MessageType.STDOUT: print(text)
-		MessageType.WARNING: print(text)
-		MessageType.ERROR: printerr(text)
+		MessageType.EDITOR: printraw("[Log]: EDITOR: ")
+		MessageType.STDOUT: printraw("[Log]: STDOUT: ")
+		MessageType.WARNING: printraw("[Log]: WARNING: ")
+		MessageType.ERROR: printraw("[Log]: ERROR: ")
+	print(text)
 
 func send_message(type, text: String):
 	output_message(type, text)
