@@ -9,7 +9,7 @@ func add_project_item(folder: String, favorite: bool):
 
 	item.initialize(folder, favorite)
 	item.connect("favorite_toggled", self, "_on_project_favorite_toggled", [folder])
-	item.connect("deleted", self, "_on_project_deleted", [folder])
+	item.connect("project_deleted", self, "_on_project_deleted", [folder])
 
 func _ready():
 	# load projects file
@@ -40,6 +40,8 @@ func _on_project_favorite_toggled(is_favorite: bool, folder: String):
 	reload_projects()
 
 func _on_project_deleted(folder: String):
+	# confirmation is handled by the item itself
+
 	if Directory.new().dir_exists(folder):
 		OS.move_to_trash(folder)
 		

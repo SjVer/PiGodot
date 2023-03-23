@@ -1,22 +1,23 @@
 extends Control
 
-var project_folder: String
+var project : Project
 
 onready var project_icon : TextureRect = $Margin/HBox/Icon
 onready var title_label : Label = $Margin/HBox/Info/TitleLabel
+onready var title_input : LineEdit = $Margin/HBox/Info/TitleInput
 onready var path_label : Label = $Margin/HBox/Info/PathOptions/PathLabel
 onready var fav_button : TextureButton = $Margin/HBox/Favorite/Button
 
 signal favorite_toggled(is_favorite)
-signal deleted
+signal project_deleted
 
 func _ready():
 	path_label.add_color_override("font_color", Color(1, 1, 1, 0.6))
 	$Margin/HBox/Info/PathOptions/OpenButton.modulate = Color(1, 1, 1, 0.6)
 
 func initialize(folder: String, favorite: bool):
-	var project := Project.new()
-	if project.load(folder.plus_file("project.godot")) == OK:
+	project = Project.new()
+	if project.load(folder) == OK:
 		title_label.text = project.get_value("application", "config/name")
 		var icon_path = project.get_value("application", "config/icon")
 
@@ -34,7 +35,6 @@ func initialize(folder: String, favorite: bool):
 		project_icon.modulate = Color(1, 1, 1, 0.5)	
 		$Margin/HBox/Info/PathOptions/OpenButton.icon = preload("res://assets/icons/FileBroken.svg")
 
-	project_folder = folder
 	path_label.text = folder
 	fav_button.pressed = favorite
 	_on_favorite_toggled(favorite)
@@ -42,11 +42,11 @@ func initialize(folder: String, favorite: bool):
 func _on_project_pressed():
 	# TODO: always true
 	if $Button.has_focus():
-		Workspace.open_project(project_folder)
+		Workspace.open_project(project.folder)
 		get_tree().change_scene("res://scenes/editor/editor.tscn")
 
 func _on_open_button_pressed():
-	OS.shell_open("file://" + project_folder)
+	OS.shell_open("file://" + project.folder)
 
 func _on_favorite_toggled(button_pressed: bool):
 	if button_pressed:
@@ -56,9 +56,26 @@ func _on_favorite_toggled(button_pressed: bool):
 
 	emit_signal("favorite_toggled", button_pressed)
 	
+func _on_rename_pressed():
+	title_label.hide()
+	title_input.text = title_label.text
+	title_input.show()
+	title_input.grab_focus()
+	title_input.caret_position = title_input.text.length()
+
+func _on_title_entered(new_text: String):
+	project.set_value("application", "config/name", new_text)
+	assert(project.save_project() == OK)
+
+	title_input.hide()
+	title_label.text = new_text
+	title_label.show()
+
 func _on_delete_pressed():
 	var dialog := ConfirmationDialog.new()
 	dialog.dialog_text = "This will move the project to the recycle bin or delete it permanently!"
 	add_child(dialog)
 	dialog.popup_centered_minsize()
-	dialog.connect("confirmed", self, "emit_signal", ["deleted"])
+	dialog.get_cancel().grab_focus()
+	dialog.connect("confirmed", self, "emit_signal", ["project_deleted"])
+

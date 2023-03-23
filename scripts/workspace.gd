@@ -61,15 +61,9 @@ func open_project(folder: String):
 	print("[Workspace]: opening project in folder: ", folder)
 	resource_dir = folder
 
-	# check project file
-	var project_path := resource_dir.plus_file("project.godot")
-	if not File.new().file_exists(project_path):
-		printerr("[Workspace]: ERROR: project file not found: ", project_path)
-		return
-
 	# load project
 	project = Project.new()
-	assert(project.load(project_path) == OK)
+	assert(project.load(folder) == OK)
 
 	# find userdata dir
 	var project_name = project.get_value("application", "config/name")
