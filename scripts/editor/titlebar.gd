@@ -71,15 +71,18 @@ func _on_menu_option_pressed(id, confirmed: bool = false):
 				get_tree().change_scene("res://scenes/project_manager/project_manager.tscn")
 
 		MenuOption.RELOAD_PROJECT:
-			if not confirmed and editor.has_unsaved_changes():
-				confirm(id, "Save changes before reloading?", "Save & Reload")
-			else:
-				get_tree().change_scene("res://scenes/editor/editor.tscn")
+			Preferences.set_ui_scale(1.5)
+			Preferences.save()
+			PiGodot.restart()
+			# if not confirmed and editor.has_unsaved_changes():
+			# 	confirm(id, "Save changes before reloading?", "Save & Reload")
+			# else:
+			# 	get_tree().change_scene("res://scenes/editor/editor.tscn")
 
 		MenuOption.ABOUT_PIGODOT:
 			if $AboutPopup/Panel/Margin/Text.bbcode_text == "":
 				var f := File.new()
-				assert(f.open("res://about.bb", File.READ) == OK)
+				assert(f.open("res://misc/about.bb", File.READ) == OK)
 				$AboutPopup/Panel/Margin/Text.bbcode_text = f.get_as_text()
 				$AboutPopup/Panel/Margin/Text.connect("meta_clicked", OS, "shell_open")
 				f.close()

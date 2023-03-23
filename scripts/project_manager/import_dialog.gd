@@ -49,3 +49,20 @@ func _on_confirm_pressed():
 	Workspace.open_project(dir.get_current_dir())
 	get_tree().change_scene("res://scenes/editor/editor.tscn")
 
+func _on_browse_pressed():
+	var dialog := FileDialog.new()
+	dialog.window_title = "Select a Project Folder"
+	dialog.mode = FileDialog.MODE_OPEN_DIR
+	dialog.access = FileDialog.ACCESS_FILESYSTEM
+	dialog.current_dir = OS.get_system_dir(OS.SYSTEM_DIR_DOWNLOADS)
+	dialog.resizable = true
+	dialog.popup_exclusive = true
+
+	add_child(dialog)
+	dialog.popup_centered_ratio(0.75)
+
+	dialog.connect("dir_selected", self, "_on_folder_selected")
+
+func _on_folder_selected(folder: String):
+	$Margin/VBox/HBox/FolderInput.text = folder
+	_on_folder_input_changed(folder)

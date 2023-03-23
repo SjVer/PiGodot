@@ -1,4 +1,4 @@
-bin/
+exporting/builds/
 data_dir
 
 # Godot-specific ignores

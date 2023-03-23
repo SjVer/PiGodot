@@ -24,18 +24,24 @@ config/name="PiGodot"
 run/main_scene="res://scenes/project_manager/project_manager.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="pigodot"
+config/project_settings_override="user://preferences.cfg"
 config/icon="res://assets/icon.png"
 
 [autoload]
 
 PiGodot="*res://scripts/pigodot.gd"
 Log="*res://scripts/log.gd"
+Preferences="*res://scripts/preferences.gd"
 Workspace="*res://scripts/workspace.gd"
 
 [debug]
 
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
+
+[display]
+
+window/stretch/shrink=1.5
 
 [editor_plugins]
 

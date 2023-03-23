@@ -9,14 +9,17 @@ var version_patch: int = NAN
 var version_hash: String
 var version: String
 
-var data_dir := OS.get_data_dir().plus_file(internal_app_name)
+# var data_dir := OS.get_data_dir().plus_file(internal_app_name)
+var data_dir := OS.get_user_data_dir()
 
-func _init():
+func _ready():
 	# load version
 	var f := File.new()
-	assert(f.open("res://version", File.READ) == OK)
+	assert(f.open("res://misc/version", File.READ) == OK)
+	var text := f.get_as_text()
+	f.close()
 
-	for line in f.get_as_text().split("\n"):
+	for line in text.split("\n"):
 		var key = line.split("=")[0]
 		var value = line.split("=")[1]
 		match key:
@@ -35,3 +38,7 @@ func _init():
 		version_major, version_minor, version_patch,
 		version_hash
 	]
+
+func restart():
+	OS.execute(OS.get_executable_path(), [], false)
+	get_tree().quit()

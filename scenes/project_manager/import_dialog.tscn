@@ -4,9 +4,11 @@
 [ext_resource path="res://scripts/project_manager/import_dialog.gd" type="Script" id=2]
 
 [node name="ImportDialog" type="WindowDialog"]
+visible = true
 margin_right = 662.0
 margin_bottom = 139.0
 theme = ExtResource( 1 )
+popup_exclusive = true
 window_title = "Import Existing Project"
 script = ExtResource( 2 )
 
@@ -84,5 +86,6 @@ margin_bottom = 28.0
 text = "Import & Edit"
 
 [connection signal="text_changed" from="Margin/VBox/HBox/FolderInput" to="." method="_on_folder_input_changed"]
+[connection signal="pressed" from="Margin/VBox/HBox/BrowseButton" to="." method="_on_browse_pressed"]
 [connection signal="pressed" from="Margin/VBox/Buttons/CancelButton" to="." method="_on_cancel_pressed"]
 [connection signal="pressed" from="Margin/VBox/Buttons/ConfirmButton" to="." method="_on_confirm_pressed"]
