@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://theme.tres" type="Theme" id=1]
-[ext_resource path="res://scripts/editor/output.gd" type="Script" id=2]
+[ext_resource path="res://scripts/editor/docks/output.gd" type="Script" id=2]
 [ext_resource path="res://assets/JetBrainsMono_Regular.woff2" type="DynamicFontData" id=3]
 
 [sub_resource type="StyleBoxFlat" id=2608]

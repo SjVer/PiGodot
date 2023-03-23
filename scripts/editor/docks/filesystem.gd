@@ -52,6 +52,8 @@ const filetype_icons = {
 var file_icon = preload("res://assets/icons/File.svg")
 var folder_icon = preload("res://assets/icons/Folder.svg")
 
+var editor
+
 onready var search_input : LineEdit = $SearchBar/Input
 onready var tree : Tree = $Tree
 
@@ -205,12 +207,16 @@ func _ready():
 
 	update_file_tree()
 
+	tree.connect("cell_selected", self, "_on_tree_item_selected")
+
 func _on_search_input_changed(_new_text: String):
 	fill_file_tree(null, root_file_item)
 
 func _on_reload_pressed():
 	update_file_tree()
 
-func _on_tree_item_double_clicked():
-	# TODO: this is just not being called :(
-	print("test")
+func _on_tree_item_selected():
+	var path : String = tree.get_selected().get_meta("full_path")
+
+	if path.ends_with(".tscn"):
+		editor.scenes.add_scene(Workspace.globalize_path(path))

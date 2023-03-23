@@ -8,8 +8,9 @@ onready var scene_tabs : Tabs = $Margin/VBox/Docks/CenterRight/CenterDock/VBox/V
 onready var add_scene_button : ToolButton = scene_tabs.get_node("AddSceneButton")
 
 var scenetree_dock = preload("res://scenes/editor/scenetree.tscn").instance()
-var filesystem_dock = preload("res://scenes/editor//filesystem.tscn").instance()
-var inspector_dock = preload("res://scenes/editor//inspector.tscn").instance()
+var filesystem_dock = preload("res://scenes/editor/filesystem.tscn").instance()
+var inspector_dock = preload("res://scenes/editor/inspector.tscn").instance()
+onready var scenes := $Margin/VBox/Docks/CenterRight/CenterDock/VBox/VSplit/Scenes
 
 func load_default_layout():
 	left_dock_top.add_child(scenetree_dock)
@@ -30,6 +31,10 @@ func has_unsaved_changes():
 	return true
 
 func _ready():
+	scenetree_dock.editor = self
+	filesystem_dock.editor = self
+	inspector_dock.editor = self
+
 	# make add scene button darker
 	add_scene_button.add_color_override("icon_color_normal",  Color(0.6, 0.6, 0.6, 0.8))
 

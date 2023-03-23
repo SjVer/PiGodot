@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scripts/editor/filesystem.gd" type="Script" id=1]
+[ext_resource path="res://scripts/editor/docks/filesystem.gd" type="Script" id=1]
 [ext_resource path="res://assets/icons/Search.svg" type="Texture" id=2]
 [ext_resource path="res://theme.tres" type="Theme" id=3]
 [ext_resource path="res://assets/icons/Reload.svg" type="Texture" id=4]
@@ -39,4 +39,3 @@ select_mode = 2
 
 [connection signal="text_changed" from="SearchBar/Input" to="." method="_on_search_input_changed"]
 [connection signal="pressed" from="SearchBar/ReloadButton" to="." method="_on_reload_pressed"]
-[connection signal="item_double_clicked" from="Tree" to="." method="_on_tree_item_double_clicked"]

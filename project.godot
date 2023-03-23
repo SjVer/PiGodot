@@ -39,10 +39,6 @@ Workspace="*res://scripts/workspace.gd"
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
 
-[display]
-
-window/stretch/shrink=1.5
-
 [editor_plugins]
 
 enabled=PoolStringArray(  )
