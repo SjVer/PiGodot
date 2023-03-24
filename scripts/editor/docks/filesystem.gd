@@ -217,6 +217,7 @@ func _on_reload_pressed():
 
 func _on_tree_item_selected():
 	var path : String = tree.get_selected().get_meta("full_path")
+	var exts := ResourceLoader.get_recognized_extensions_for_type("PackedScene")
 
-	if path.ends_with(".tscn"):
+	if path.get_extension() in exts:
 		editor.scenes.add_scene(Workspace.globalize_path(path))

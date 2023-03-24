@@ -4,8 +4,6 @@ onready var left_dock_top : TabContainer = $Margin/VBox/Docks/LeftDock/TopTabs
 onready var left_dock_bottom : TabContainer = $Margin/VBox/Docks/LeftDock/BottomTabs
 onready var right_dock_top : TabContainer = $Margin/VBox/Docks/CenterRight/RightDock/TopTabs
 onready var right_dock_bottom : TabContainer = $Margin/VBox/Docks/CenterRight/RightDock/BottomTabs
-onready var scene_tabs : Tabs = $Margin/VBox/Docks/CenterRight/CenterDock/VBox/VSplit/Scenes/Tabbar/Tabs
-onready var add_scene_button : ToolButton = scene_tabs.get_node("AddSceneButton")
 
 var scenetree_dock = preload("res://scenes/editor/scenetree.tscn").instance()
 var filesystem_dock = preload("res://scenes/editor/filesystem.tscn").instance()
@@ -20,13 +18,6 @@ func load_default_layout():
 	$Margin/VBox/Docks.split_offset = 80
 	$Margin/VBox/Docks/CenterRight.split_offset = -200
 
-func update_tabs():
-	# snap add button
-	var last_rect := Rect2()
-	if scene_tabs.get_tab_count() > 0:
-		last_rect = scene_tabs.get_tab_rect(scene_tabs.get_tab_count() - 1)
-	add_scene_button.rect_position.x = last_rect.position.x + last_rect.end.x + 3
-
 func has_unsaved_changes():
 	return true
 
@@ -34,13 +25,13 @@ func _ready():
 	scenetree_dock.editor = self
 	filesystem_dock.editor = self
 	inspector_dock.editor = self
-
-	# make add scene button darker
-	add_scene_button.add_color_override("icon_color_normal",  Color(0.6, 0.6, 0.6, 0.8))
+	scenes.editor = self
 
 	# load layout stuff
 	load_default_layout()
 
-	# dummy scene
-	scene_tabs.add_tab("test", preload("res://assets/icons/Node.svg"))
-	update_tabs()
+	# prepare viewport
+	scenes.viewport.size.x = Workspace.project.get_value("display", "window/size/width")
+	scenes.viewport.size.y = Workspace.project.get_value("display", "window/size/height")
+
+

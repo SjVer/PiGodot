@@ -27,3 +27,8 @@ quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
+
+[display]
+
+window/size/width=1024
+window/size/height=600
